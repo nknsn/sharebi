@@ -1,0 +1,11 @@
+<div>
+    <%= form_with model: @user, url: login_path do |f| %>
+
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "input" %>
+
+      <%= f.password_field :password,  autocomplete: "current-password", :placeholder => "パスワード(6文字以上)", class: "input" %>
+
+      <%= f.submit "ログインする" %>
+
+    <% end %>
+  </div>

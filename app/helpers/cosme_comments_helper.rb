@@ -1,0 +1,2 @@
+module CosmeCommentsHelper
+end

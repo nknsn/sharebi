@@ -1,0 +1,2 @@
+class CosemeComment < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class CosmeCommentsController < ApplicationController
+end
