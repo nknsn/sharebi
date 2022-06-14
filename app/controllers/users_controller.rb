@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      redirect_to root_path
+      login_url
+      redirect_to cosmetics_path
     else
       render 'new'
     end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password_digest, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end

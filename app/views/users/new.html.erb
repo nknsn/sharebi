@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
       <h2>新規登録</h2>
-      <%= form_with model: @user, url: root_path, local: true do |f| %>
+      <%= form_with model: @user, url: signup_path, local: true do |f| %>
 
       <div class="field">
         <%= f.text_field :name, autofocus: true, :placeholder => "ユーザー名", class: "input" %>
