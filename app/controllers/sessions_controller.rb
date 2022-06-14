@@ -15,18 +15,12 @@ class SessionsController < ApplicationController
 
 
 　def destroy
-    reset_session
+    log_out
     redirect_to root_path, notice: 'ログアウトしました。'
   end
 
-
-  private
+    private
 
   def session_params
     params.permit(:email, :password)
   end
-
-
-end
-
-

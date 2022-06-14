@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  get 'logout' => 'sessions#destroy'
+  delete 'logout' => 'sessions#destroy'
 
   resources :users, only: [:index,:show,:edit,:update]
   resources :cosmetics, only: [:new,:create,:index,:show,:edit,:update,:destroy]
