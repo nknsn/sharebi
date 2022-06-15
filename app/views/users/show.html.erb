@@ -1,0 +1,21 @@
+<div>
+  <%= image_tag @user.get_profile_image %>
+  <%= @user.name %>
+  <% if @user == current_user %>
+    <%= link_to "プロフィールを編集", edit_user_path(@user) %>
+  <% end %>
+</div>
+
+
+
+<% @cosmetcs.each do |cosmetic| %>
+<div>
+  <%= link_to cosmetics_path(cosmetic.id) do %>
+    <%= image_tag cosmetic.get_image %>
+  <% end %>
+  <!--<p>投稿ユーザー画像：<%#= image_tag cosmetic.user.get_profile_image %></p>-->
+  <p>商品名：<%= cosmetic.item %></p>
+  <p>説明：<%= cosmetic.description %></p>
+  <!--<p>ユーザーネーム：<%#= cosmetic.user.name %></p>-->
+</div>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>画像投稿フォーム</h1>
+  <%= form_with model: @cosmetic do |f| %>
+    <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    <h4>商品名</h4>
+      <%= f.text_field :item %>
+    <h4>説明</h4>
+      <%= f.text_area :description %>
+    <%= f.submit '投稿する' %>
+  <% end %>

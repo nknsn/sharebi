@@ -1,0 +1,10 @@
+<div>
+  <p><%= image_tag @cosmetic.user.get_profile_image %><%= @cosmetic.user.name %></p>
+  <%= image_tag @cosmetic.get_image %>
+  <p>商品名：<%= @cosmetic.item %></p>
+  <p>説明：<%= @cosmetic.description %></p>
+  <p>投稿日：<%= @cosmetic.created_at.strftime('%Y/%m/%d') %></p>
+  <% if @cosmetic.user == current_user %>
+    <%= link_to "削除", cosmetics_path(@cosmetic), method: :delete %>
+  <% end %>
+</div>

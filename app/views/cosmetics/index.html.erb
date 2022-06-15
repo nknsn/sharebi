@@ -1,0 +1,10 @@
+<% @cosmetics.each do |cosmetic| %>
+<div>
+  <%= link_to cosmetics_path(cosmetic.id) do %>
+    <%= image_tag cosmetic.get_image %>
+  <% end %>
+  <p><%= image_tag cosmetic.user.get_profile_image %><%= cosmetic.user.name %></p>
+  <p>商品名：<%= cosmetic.item %></p>
+  <p>説明：<%= cosmetic.description %></p>
+</div>
+<% end %>
