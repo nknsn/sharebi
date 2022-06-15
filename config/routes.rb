@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :cosmetics, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
+    resource :favorites, only: [:create, :destroy]
     resources :cosme_comments, only: [:create,:destroy]
   end
 

@@ -7,6 +7,20 @@
   <% if @cosmetic.user == current_user %>
     <%= link_to "削除", cosmetics_path(@cosmetic), method: :delete %>
   <% end %>
+
+  <% if @cosmetic.favorited_by?(current_user) %>
+    <p>
+      <%= link_to cosmetic_favorites_path(@cosmetic), method: :delete do %>
+        ♥<%= @cosmetic.favorites.count %>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to cosmetic_favorites_path(@cosmetic), method: :post do %>
+        ♡<%= @cosmetic.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
 </div>
 
 <div>
