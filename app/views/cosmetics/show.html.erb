@@ -8,3 +8,20 @@
     <%= link_to "削除", cosmetics_path(@cosmetic), method: :delete %>
   <% end %>
 </div>
+
+<div>
+  <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
+  <% @cosmetic.cosme_comments.each do |cosme_comment| %>
+    <p><%= image_tag cosme_comment.user.get_profile_image %> <%= cosme_comment.user.name %></p>
+    <%= cosme_comment.created_at.strftime('%Y/%m/%d') %> <%= cosme_comment.comment %>
+    <% if cosme_comment.user == current_user %>
+      <%= link_to "削除", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントを追加" %>
+    <%= f.submit "投稿する" %>
+  <% end %>
+</div>

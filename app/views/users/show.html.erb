@@ -8,14 +8,13 @@
 
 
 
-<% @cosmetcs.each do |cosmetic| %>
+<% @cosmetics.each do |cosmetic| %>
 <div>
   <%= link_to cosmetics_path(cosmetic.id) do %>
     <%= image_tag cosmetic.get_image %>
   <% end %>
-  <!--<p>投稿ユーザー画像：<%#= image_tag cosmetic.user.get_profile_image %></p>-->
   <p>商品名：<%= cosmetic.item %></p>
   <p>説明：<%= cosmetic.description %></p>
-  <!--<p>ユーザーネーム：<%#= cosmetic.user.name %></p>-->
+  <p>コメント数：<%= cosmetic.cosme_comments.count %></p>
 </div>
 <% end %>

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @cosmetcs = @user.cosmetics
+    @cosmetics = @user.cosmetics
   end
 
   def edit

@@ -1,9 +1,9 @@
 class Cosmetic < ApplicationRecord
 
   has_one_attached :image
-
   belongs_to :user
-  
+  has_many :cosme_comments, dependent: :destroy
+
   def get_image
     if image.attached?
       image
@@ -11,8 +11,8 @@ class Cosmetic < ApplicationRecord
       '1907768.jpg'
     end
   end
-  
-  
+
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/1907768.jpg')

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :cosmetics, dependent: :destroy
+  has_many :cosme_comments, dependent: :destroy
 
   has_one_attached :profile_image
 

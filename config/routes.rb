@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  resources :cosmetics, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
+    resources :cosme_comments, only: [:create,:destroy]
+  end
+
   resources :users, only: [:show,:edit,:update]
-  resources :cosmetics, only: [:new,:create,:index,:show,:edit,:update,:destroy]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
