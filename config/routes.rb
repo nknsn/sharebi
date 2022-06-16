@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root :to => "homes#top"
-  get 'homes/about'
+  # get 'homes/about'
   get '/signup' => 'users#new'
   post 'signup' => 'users#create'
   get '/login' => 'sessions#new'

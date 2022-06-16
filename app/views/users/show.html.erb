@@ -1,20 +1,33 @@
-<div>
-  <%= image_tag @user.get_profile_image %>
-  <%= @user.name %>
-  <% if @user == current_user %>
-    <%= link_to "プロフィールを編集", edit_user_path(@user) %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto rounded px-0 my-5">
+      <%= image_tag @user.get_profile_image(60, 60) %>
+      <h6><%= @user.name %></h6>
+      <%= @user.introduction %>
+      <br>
+      <i class="fas fa-building"></i> : <span><%= @user.working_place %></span>
+      <br>
+      <i class="fa fa-users "></i>  :  <%= @user.affiliation %>
+      <i class="fa fa-droplet"></i>  :  <%= @user.skin_type %>
+      <% if @user == current_user %>
+        <%= link_to "プロフィールを編集", edit_user_path(@user), class:"btn btn-outline-info" %>
+      <% end %>
+      <hr>
+    </div>
+  </div>
 </div>
 
-
-
-<% @cosmetics.each do |cosmetic| %>
-<div>
-  <%= link_to cosmetics_path(cosmetic.id) do %>
-    <%= image_tag cosmetic.get_image %>
-  <% end %>
-  <p>商品名：<%= cosmetic.item %></p>
-  <p>説明：<%= cosmetic.description %></p>
-  <p>コメント数：<%= cosmetic.cosme_comments.count %></p>
+<div class="card-list-container">
+  <div class="row">
+    <div class="col lg-4 md-4 sm-4"></div>
+    <div class="col lg-4 md-4 sm-4 pb-5">
+      <% @cosmetics.each do |cosmetic| %>
+        <%= link_to cosmetic_path(cosmetic.id) do %>
+          <%= image_tag cosmetic.get_image(200, 200) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col lg-4 md-4 sm-4"></div>
+  </div>
 </div>
-<% end %>
+<%= paginate @cosmetics %>

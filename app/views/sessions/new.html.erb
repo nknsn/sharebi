@@ -1,21 +1,23 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>ログイン</h2>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h5 class="text-light bg-dark p-4 mb-0">ログイン</h5>
+      <div class="form-body p-4">
       <%= form_with model: @user, url: login_path, local: true do |f| %>
-
-      <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス", class: "input" %>
-      </div><br>
-
-      <div class="field">
-        <%= f.password_field :password,  autocomplete: "current-password", :placeholder => "パスワード(6文字以上)", class: "input" %>
-      </div><br>
-
-      <div class="actions">
-        <%= f.submit "ログインする" %>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fa fa-envelope"></i></span>
+          </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"メールアドレス" %>
+        </div>
+        <div class="input-group mb-3 mt-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" aria-hidden="true"><i class="fa fa-key"></i></span>
+          </div>
+            <%= f.password_field :password,  autocomplete: "current-password", class:"form-control", placeholder:"パスワード(6文字以上)" %>
+        </div>
+          <%= f.submit "ログインする", class:"btn btn-lg btn-block btn-black btn-secondary mt-4" %>
       </div>
-
       <% end %>
     </div>
   </div>

@@ -7,12 +7,15 @@ class CosmeticsController < ApplicationController
   def create
     @cosmetic = Cosmetic.new(cosmetic_params)
     @cosmetic.user_id = current_user.id
-    @cosmetic.save
-    redirect_to cosmetics_path
+    if @cosmetic.save
+      redirect_to cosmetics_path
+    else
+      render :new
+    end
   end
 
   def index
-    @cosmetics = Cosmetic.all
+    @cosmetics = Cosmetic.page(params[:page])
   end
 
   def show

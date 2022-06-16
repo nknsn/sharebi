@@ -1,41 +1,62 @@
-<div>
-  <p><%= image_tag @cosmetic.user.get_profile_image %><%= @cosmetic.user.name %></p>
-  <%= image_tag @cosmetic.get_image %>
-  <p>商品名：<%= @cosmetic.item %></p>
-  <p>説明：<%= @cosmetic.description %></p>
-  <p>投稿日：<%= @cosmetic.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @cosmetic.user == current_user %>
-    <%= link_to "削除", cosmetics_path(@cosmetic), method: :delete %>
-  <% end %>
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= image_tag @cosmetic.get_image(400, 400), class:"card-img-top"; %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <%= image_tag @cosmetic.user.get_profile_image(50, 50), class:"mt-3 rounded-circle"; %>
+            <%= @cosmetic.user.name %>
+          </div>
+          <div class="col-10">
+            <p class="card-title">
+              <strong><i class="fa fa-ribbon"></i>  <span><%= @cosmetic.item %></span></strong>
+              <p class="card-text">製品について：<%= @cosmetic.description %></p>
+              <i class="fa fa-calendar"></i> <span><%= @cosmetic.created_at.strftime('%Y/%m/%d') %>  |</span>
+              <% if @cosmetic.favorited_by?(current_user) %>
+                <span>
+                  <%= link_to cosmetic_favorites_path(@cosmetic), method: :delete do %>
+                    ♥<%= @cosmetic.favorites.count %>  |
+                  <% end %>
+                </span>
+                <% else %>
+                <span>
+                  <%= link_to cosmetic_favorites_path(@cosmetic), method: :post do %>
+                    ♡<%= @cosmetic.favorites.count %>  |
+                  <% end %>
+                </span>
+              <% end %>
+              <i class="fa fa-comment"></i> <span><%= @cosmetic.cosme_comments.count %></span>
+              <% if @cosmetic.user == current_user %>
+                <%= link_to "削除", cosmetics_path(@cosmetic), method: :delete, class:"btn btn-sm btn-outline-secondary" %>
+              <% end %>
+          </div>
 
-  <% if @cosmetic.favorited_by?(current_user) %>
-    <p>
-      <%= link_to cosmetic_favorites_path(@cosmetic), method: :delete do %>
-        ♥<%= @cosmetic.favorites.count %>
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to cosmetic_favorites_path(@cosmetic), method: :post do %>
-        ♡<%= @cosmetic.favorites.count %>
-      <% end %>
-    </p>
-  <% end %>
-</div>
-
-<div>
-  <p>コメント件数：<%= @cosmetic.cosme_comments.count %></p>
-  <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-    <p><%= image_tag cosme_comment.user.get_profile_image %> <%= cosme_comment.user.name %></p>
-    <%= cosme_comment.created_at.strftime('%Y/%m/%d') %> <%= cosme_comment.comment %>
-    <% if cosme_comment.user == current_user %>
-      <%= link_to "削除", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete %>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントを追加" %>
-    <%= f.submit "投稿する" %>
-  <% end %>
-</div>
+          <div class="comments card-text col-12">
+            <hr>
+            <h6 class="mt-3">コメント件数：<%= @cosmetic.cosme_comments.count %></h6>
+            <div class="media border mb-3">
+              <% @cosmetic.cosme_comments.each do |cosme_comment| %>
+              <p><%= image_tag cosme_comment.user.get_profile_image %> <%= cosme_comment.user.name %></p>
+                <div class="media-body ml-4 p-3">
+                  <i class="fa fa-calendar"></i>
+                  <span><%= cosme_comment.created_at.strftime('%Y/%m/%d') %> <%= cosme_comment.comment %></span>
+                  <% if cosme_comment.user == current_user %>
+                    <%= link_to "削除", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class:"btn btn-sm btn-outline-danger" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="comments card-text col-12">
+            <hr>
+            <%= form_with model: [@cosmetic, @cosme_comment] do |f| %>
+            <div class="media-body ml-4 p-3">
+              <%= f.text_area :comment, rows: '5', cols: "65", placeholder: "コメントを追加" %>
+              <%= f.submit '投稿する', class:"btn btn-sm btn-secondary" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
