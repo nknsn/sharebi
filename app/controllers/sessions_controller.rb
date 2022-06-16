@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     user=User.find_by(email: session_params[:email])
-    if user&.authenticate(session_params[:password])#ユーザーが見つかった場合には、送られてきたパスワードによる認証をauthenticateメソッドを使って行います
+    if user&.authenticate(session_params[:password])
       session[:user_id]=user.id
       redirect_to cosmetics_path, notice: 'ログインしました'
     else

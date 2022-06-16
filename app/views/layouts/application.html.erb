@@ -2,10 +2,10 @@
 <html>
   <head>
     <title>Sharebi</title>
-    <script src="https://kit.fontawesome.com/c05e50022c.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/c05e50022c.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -24,20 +24,35 @@
           <ul class="navbar-nav ml-auto">
           <% if current_user %>
             <li class="nav-item">
-            <%= link_to "ログアウト",logout_path,method: :delete, class: 'nav-link text-dark' %>
+            <%= link_to cosmetics_path, class: 'nav-link text-dark' do %>
+              <i class="fa fa-home fa-2x"></i>
+            <% end %>
             </li>
             <li class="nav-item">
-            <%= link_to '投稿フォーム', new_cosmetic_path, class: 'nav-link text-dark' %>
+            <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
+              <%= image_tag current_user.get_profile_image(35, 35) %>
+            <% end %>
             </li>
             <li class="nav-item">
-            <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+            <%= link_to new_cosmetic_path, class: 'nav-link text-dark' do %>
+              <i class="fa fa-edit fa-2x "></i>
+            <% end %>
+            </li>
+            <li class="nav-item">
+            <%= link_to logout_path,method: :delete, class: 'nav-link text-dark' do %>
+              <i class="fa fa-lock fa-2x "></i>
+            <% end %>
             </li>
             <% else %>
             <li class="nav-item">
-            <%= link_to "新規登録",signup_path, class: 'nav-link text-dark' %>
+            <%= link_to signup_path, class: 'nav-link text-dark' do %>
+              <i class="fa fa-user fa-2x"></i> 新規登録
+            <% end %>
             </li>
             <li class="nav-item">
-            <%= link_to "ログイン",login_path, class: 'nav-link text-dark' %>
+            <%= link_to login_path, class: 'nav-link text-dark' do %>
+              <i class="fa fa-unlock-alt fa-2x "></i>   ログイン
+            <% end %>
             </li>
           <% end %>
           </ul>
@@ -55,18 +70,6 @@
       <div class="row no-gutters">
        <div class="col-md-4">
         <p>美のプロが学び合うSNS</p>
-        <%#= image_tag('logo-white.png') %>
-       </div>
-       <div class="col-md-8">
-         <h6 class="text-white mt-2 mb-3">Link</h6>
-         <ul class="p-0 list-unstyled">
-          <li>
-           <a href="" title="About" class="text-white-50">会社概要</a>
-          </li>
-          <li>
-           <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
-          </li>
-         </ul>
        </div>
       </div>
      </div>
