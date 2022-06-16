@@ -15,6 +15,21 @@
           <p class="card-title">
           <strong><i class="fa fa-ribbon"></i> <span><%= cosmetic.item %></span></strong>
           <br>
+          <div class="relative-post-evaluation">
+            <p>★ :
+            <script>
+              $('#star-rate-<%= cosmetic.id %>').raty({
+                size: 36,
+                starOff: "<%= asset_path('star-off.png') %>",
+                starOn: "<%= asset_path('star-on.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                half: true,
+                readOnly: true,
+                score: <%= cosmetic.evaluation %>,
+              });
+            </script>
+            <%= cosmetic.evaluation %></p>
+          </div>
           <i class="fa fa-comment"></i>
           <%= link_to "#{cosmetic.cosme_comments.count}", cosmetic_path(cosmetic.id) %>
         </div>

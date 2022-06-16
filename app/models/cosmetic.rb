@@ -8,6 +8,8 @@ class Cosmetic < ApplicationRecord
 
   validates :item, presence: true
   validates :image, presence: true
+  
+
 
   def get_image
     if image.attached?

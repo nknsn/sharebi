@@ -34,7 +34,7 @@ class CosmeticsController < ApplicationController
   end
 
   def destroy
-    @cosmetic = Cosmetic.find(prams[:id])
+    @cosmetic = Cosmetic.find(params[:id])
     @cosmetic.destroy
     redirect_to cosmetics_path
   end
@@ -42,6 +42,7 @@ class CosmeticsController < ApplicationController
    private
 
   def cosmetic_params
-    params.require(:cosmetic).permit(:item, :image, :description)
+    params.require(:cosmetic).permit(:item, :image, :description, :evaluation)
   end
+
 end

@@ -24,7 +24,22 @@
         <%= f.text_field :item, class:"form-control",placeholder:"アイテム名" %>
     </div>
         <%= f.text_area :description, class:"form-control", rows:"3", placeholder:"説明を入力..."  %>
-          <hr>
+
+    <div class="field" id="star">
+      <%= f.label :evaluation, "星評価：" %>
+      <%= f.hidden_field :evaluation, id: :review_star %>
+      <script>
+        $('#star').raty({
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'cosmetic[evaluation]',
+          half: true,
+        });
+      </script>
+    </div>
+      <hr>
         <%= f.submit '投稿する', class:"btn btn-lg btn-block btn-black btn-secondary mt-4" %>
       <% end %>
       </div>
