@@ -23,8 +23,12 @@
       </div>
         <%= f.text_field :item, class:"form-control",placeholder:"アイテム名" %>
     </div>
+    <div class="input-group mb-3 mt-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text" aria-hidden="true"><i class="fa fa-bookmark"></i></span>
+      </div>
         <%= f.text_area :description, class:"form-control", rows:"3", placeholder:"説明を入力..."  %>
-
+    </div>
     <div class="field" id="star">
       <%= f.label :evaluation, "星評価：" %>
       <%= f.hidden_field :evaluation, id: :review_star %>

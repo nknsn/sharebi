@@ -16,18 +16,18 @@
             </div>
               <%= f.text_field :working_place, class:"form-control", placeholder:"勤務地" %>
           </div>
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fa fa-users "></i></span>
-            </div>
-              <%= f.text_field :affiliation, class:"form-control", placeholder:"ブランド" %>
-          </div>
-          <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fa fa-droplet"></i></span>
-            </div>
-              <%= f.text_field :skin_type, class:"form-control", placeholder:"肌タイプ" %>
-          </div>
+          <!--<div class="input-group mb-3 mt-4">-->
+          <!--  <div class="input-group-prepend">-->
+          <!--    <span class="input-group-text" aria-hidden="true"><i class="fa fa-users "></i></span>-->
+          <!--  </div>-->
+              <%#= f.text_field :affiliation, class:"form-control", placeholder:"ブランド" %>
+          <!--</div>-->
+          <!--<div class="input-group mb-3 mt-4">-->
+          <!--  <div class="input-group-prepend">-->
+          <!--    <span class="input-group-text" aria-hidden="true"><i class="fa fa-droplet"></i></span>-->
+          <!--  </div>-->
+              <%#= f.text_field :skin_type, class:"form-control", placeholder:"肌タイプ" %>
+          <!--</div>-->
               <%= f.text_area :introduction, class:"form-control", rows:"3", placeholder:"自己紹介文"  %>
           <hr>
           <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "w-100" %>

@@ -10,7 +10,8 @@
           <div class="col-10">
             <p class="card-title">
               <strong><i class="fa fa-ribbon"></i>  <span><%= @cosmetic.item %></span></strong>
-              <p class="card-text">製品について：<%= @cosmetic.description %></p>
+              <p class="card-text">
+                <i class="fa fa-bookmark "></i> <%= @cosmetic.description %></p>
               <i class="fa fa-calendar"></i> <span><%= @cosmetic.created_at.strftime('%Y/%m/%d') %>  |</span>
               <% if @cosmetic.favorited_by?(current_user) %>
                 <span>
