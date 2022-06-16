@@ -27,10 +27,10 @@
               <% end %>
               <i class="fa fa-comment"></i> <span><%= @cosmetic.cosme_comments.count %></span>
               <% if @cosmetic.user == current_user %>
+                <%= link_to "編集", edit_cosmetic_path(@cosmetic.id),  class:"btn btn-sm btn-outline-info" %>
                 <%= link_to "削除", cosmetics_path(@cosmetic), method: :delete, class:"btn btn-sm btn-outline-secondary" %>
               <% end %>
           </div>
-
           <div class="comments card-text col-12">
             <hr>
             <h6 class="mt-3">コメント件数：<%= @cosmetic.cosme_comments.count %></h6>

@@ -23,6 +23,16 @@ class CosmeticsController < ApplicationController
     @cosme_comment = CosmeComment.new
   end
 
+  def edit
+    @cosmetic = Cosmetic.find(params[:id])
+  end
+
+  def update
+    @cosmetic = Cosmetic.find(params[:id])
+    @cosmetic.update(cosmetic_params)
+    redirect_to cosmetic_path(@cosmetic.id), notice: '更新しました。'
+  end
+
   def destroy
     @cosmetic = Cosmetic.find(prams[:id])
     @cosmetic.destroy
