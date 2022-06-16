@@ -1,24 +1,22 @@
-# README
+# <sharebi -シェア美->
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+美容部員同士で情報を発信し、商品知識を学ぶことができるサイト。
 
-Things you may want to cover:
+### テーマを選んだ背景
+以前美容部員として働いていた際、自店舗で取り扱いのない商品や他ブランドについての質問も多く、
+実際に自分で触れることも全てはできないため、口コミサイトなどを参考にしていました。
+しかし、実際に店舗のスタッフの評価と口コミサイトのお客様の評価に差があることが多く、
+やはり同じ立場の意見を参考にしたいと思うことが多くありました。
+中々他ブランドの方との交流の機会は少なかったため、
+気軽に見れるSNSで学ぶことができたらいいなと思い制作に着手いたしました。
 
-* Ruby version
+## 開発環境
+- OS：Amazon Linux2
+- 言語：HTML,CSS,Ruby
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- https://pixabay.com/ja/
