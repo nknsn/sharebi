@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      login_url
       redirect_to cosmetics_path
     else
       render 'new'

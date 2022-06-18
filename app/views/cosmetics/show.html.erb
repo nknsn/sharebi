@@ -52,10 +52,11 @@
             <h6 class="mt-3">コメント件数：<%= @cosmetic.cosme_comments.count %></h6>
             <div class="media border mb-3">
               <% @cosmetic.cosme_comments.each do |cosme_comment| %>
-              <p><%= image_tag cosme_comment.user.get_profile_image %> <%= cosme_comment.user.name %></p>
+              <p><%= image_tag cosme_comment.user.get_profile_image(50,50) %> <%= cosme_comment.user.name %></p>
                 <div class="media-body ml-4 p-3">
                   <i class="fa fa-calendar"></i>
-                  <span><%= cosme_comment.created_at.strftime('%Y/%m/%d') %> <%= cosme_comment.comment %></span>
+                  <%= cosme_comment.created_at.strftime('%Y/%m/%d') %><br>
+                  <%= cosme_comment.comment %>
                   <% if cosme_comment.user == current_user %>
                     <%= link_to "削除", cosmetic_cosme_comment_path(cosme_comment.cosmetic, cosme_comment), method: :delete, class:"btn btn-sm btn-outline-danger" %>
                   <% end %>
